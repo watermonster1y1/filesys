@@ -144,6 +144,8 @@ Parnas也承认，信息隐藏可能会带来一定的性能开销，特别是�
 ============
 Factory Method
 ---------
+![image](https://github.com/user-attachments/assets/55f8cb0b-995c-423d-905c-1cd43e25efbb)
+
 
 
 
