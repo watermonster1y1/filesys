@@ -144,7 +144,7 @@ Parnas也承认，信息隐藏可能会带来一定的性能开销，特别是�
 ============
 Factory Method
 ---------
-![image](https://github.com/user-attachments/assets/55f8cb0b-995c-423d-905c-1cd43e25efbb)
+
 
 
 
@@ -167,6 +167,66 @@ Strategy Pattern
 
 Template Method
 ---------------
+![image](https://github.com/user-attachments/assets/addfeef7-6011-44c8-aecc-cd0a6b5cd980)
+实现思路：
+定义算法骨架：preHandle方法定义了请求处理的固定流程：跨域设置→OPTIONS请求处理→安全验证→结果处理
+提供钩子方法：
+通过检查@IgnoreAuth注解作为"钩子点"
+允许子步骤通过注解改变行为
+固定与可变分离：
+固定步骤：跨域处理、OPTIONS处理、错误响应
+可变步骤：具体的验证逻辑
+设计目的：
+1、统一所有请求的安全处理流程。
+2、确保跨域和预检请求的合规处理。
+3、提供灵活扩展点。
+4、集中处理认证错误响应。
+
+![image](https://github.com/user-attachments/assets/dce8df94-e1b4-4402-a2f3-3a4279475f39)
+实现思路：
+定义通用处理流程：
+参数校验（必须步骤）
+服务调用（核心逻辑）
+结果封装（必须步骤）
+模板方法复用：
+多个接口(getOption, selectValue等)共享相同骨架。
+通过不同服务方法实现具体逻辑。
+设计目的：
+统一API响应格式、集中处理参数验证、确保所有查询接口遵循相同规范、减少重复代码。
+
+![image](https://github.com/user-attachments/assets/64752592-f18f-43d0-9911-cf5fa68cb7e8)
+实现思路：
+定义泛型构造器接收任意类型对象 T
+使用 BeanUtils.copyProperties() 反射机制
+将源对象 t 的属性复制到当前实体对象
+统一处理反射操作可能抛出的异常
+设计目的：
+
+1、实现 DTO/VO 到 Entity 的快速转换
+2、避免手动编写大量 setter 调用的重复代码
+3、保证不同对象类型属性复制的一致性
+
+![image](https://github.com/user-attachments/assets/b0c8edf7-b9a7-40ef-b75b-79d0bef43df4)
+实现思路：
+1、相同模板方法实现
+2、专为部门信息实体定制
+3、支持从各种数据源快速创建部门实体
+设计目的：
+1、简化部门数据的转换过程
+2、统一部门信息处理标准
+3、减少领域模型间的耦合
+
+![image](https://github.com/user-attachments/assets/be789b7e-5d18-4447-a859-40e5eb351214)
+实现思路：
+1、最简化的模板实现。
+2、单一字段实体的通用处理。
+3、保持整个系统设计一致性。
+设计目的：
+1、提供岗位数据的快速转换。
+2、支持从不同维度创建岗位实体。
+3、为简单实体提供标准初始化方案。
+
+
 
 
 
