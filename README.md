@@ -168,6 +168,7 @@ Strategy Pattern
 Template Method
 ---------------
 ![image](https://github.com/user-attachments/assets/addfeef7-6011-44c8-aecc-cd0a6b5cd980)
+
 实现思路：
 定义算法骨架：preHandle方法定义了请求处理的固定流程：跨域设置→OPTIONS请求处理→安全验证→结果处理
 提供钩子方法：
@@ -183,6 +184,7 @@ Template Method
 4、集中处理认证错误响应。
 
 ![image](https://github.com/user-attachments/assets/dce8df94-e1b4-4402-a2f3-3a4279475f39)
+
 实现思路：
 定义通用处理流程：
 参数校验（必须步骤）
@@ -195,6 +197,7 @@ Template Method
 统一API响应格式、集中处理参数验证、确保所有查询接口遵循相同规范、减少重复代码。
 
 ![image](https://github.com/user-attachments/assets/64752592-f18f-43d0-9911-cf5fa68cb7e8)
+
 实现思路：
 定义泛型构造器接收任意类型对象 T
 使用 BeanUtils.copyProperties() 反射机制
@@ -207,6 +210,7 @@ Template Method
 3、保证不同对象类型属性复制的一致性
 
 ![image](https://github.com/user-attachments/assets/b0c8edf7-b9a7-40ef-b75b-79d0bef43df4)
+
 实现思路：
 1、相同模板方法实现
 2、专为部门信息实体定制
@@ -217,6 +221,7 @@ Template Method
 3、减少领域模型间的耦合
 
 ![image](https://github.com/user-attachments/assets/be789b7e-5d18-4447-a859-40e5eb351214)
+
 实现思路：
 1、最简化的模板实现。
 2、单一字段实体的通用处理。
