@@ -144,12 +144,27 @@ Parnas也承认，信息隐藏可能会带来一定的性能开销，特别是�
 ============
 Factory Method
 ---------
+ ![image](https://github.com/user-attachments/assets/8915f247-8d20-4716-ae2c-6c4ca9263885)
+ 
+标准的Spring Bean Factory Method：
+@Bean 注解：告诉 Spring，这个方法的返回值会被注册为一个Bean，由Spring容器管理。
+方法名getAuthorizationInterceptor()充当了“Factory Method”的角色。
+new AuthorizationInterceptor()是具体的实例创建逻辑。
+按照Factory Method Pattern 的定义：
+定义一个创建对象的接口，让子类决定实例化哪一个类。工厂方法使一个类的实例化延迟到其子类。
+在Spring中，@Configuration配合@Bean实际上就是通过工厂方法来延迟Bean的实例化，由 Spring 容器控制创建。
 
-
-
-
-
-
+Factory Method设计模式的特点：
+定义创建对象的方法，而非直接实例化对象
+工厂方法将对象的创建封装在一个方法中，如getAuthorizationInterceptor()，而不是在使用处直接new，从而解耦了使用者与具体实现类。
+子类或框架可以决定实例化哪一个类
+在Spring框架中，@Bean注解配合工厂方法，允许Spring容器接管对象的创建过程，框架通过调用这个方法来获取需要的Bean实例。
+提高代码扩展性和可维护性
+如果以后AuthorizationInterceptor的构造方式发生变化，只需修改这个方法即可，不影响其调用者，符合开闭原则。
+将对象创建过程与业务逻辑分离
+工厂方法模式鼓励将“如何创建对象”的逻辑与“使用对象”的逻辑解耦。在这个例子中，拦截器的创建逻辑集中在getAuthorizationInterceptor()中，业务逻辑集中在注册拦截器的addInterceptors()中。
+便于统一管理和依赖注入
+通过@Bean的方式提供的工厂方法，让 Spring 容器统一管理拦截器Bean的生命周期，同时可以通过依赖注入注入到其他组件中。
 
 Singleton
 -----------
