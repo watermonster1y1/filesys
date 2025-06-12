@@ -155,6 +155,17 @@ Singleton
 -----------
 
 
+![image](https://github.com/user-attachments/assets/e4043a94-7628-4b79-8e33-9033cc42f3ed)
+
+实现思路
+1、通过静态方法封装 Spring ApplicationContext 的 isSingleton() 方法，为上层业务提供简化的访问接口
+2、采用静态方法设计，无需实例化即可直接调用，降低使用成本和内存开销
+3、利用已初始化的 applicationContext 实例，直接调用 Spring 框架的原生 API 获取 bean 作用域信息
+
+设计目的
+1、为开发者提供更简洁的方式来检查 bean 的单例状态，避免直接操作复杂的 ApplicationContext 对象
+2、集中管理 Spring 容器相关操作，便于后续维护和功能扩展，形成统一的工具类体系
+3、为需要根据 bean 作用域进行不同处理的业务场景提供判断依据，如缓存策略、资源管理等
 
 
 
@@ -234,8 +245,6 @@ Template Method
 1、提供岗位数据的快速转换。
 2、支持从不同维度创建岗位实体。
 3、为简单实体提供标准初始化方案。
-
-
 
 
 
